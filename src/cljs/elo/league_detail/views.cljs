@@ -221,7 +221,7 @@
   (rf/dispatch [::handlers/load-players])
 
   (fn []
-    [:div.content
+    [:div.league_detail__root
      [github-fork-me]
      [show-error]
      [preamble]
