@@ -8,6 +8,7 @@
 
 (def setter (partial common/setter* page))
 
+
 (def default-player
   {:name ""
    :email ""})
@@ -20,6 +21,7 @@
 (rf/reg-event-db :name (setter [:player :name]))
 (rf/reg-event-db :email (setter [:player :email]))
 (rf/reg-event-db :league (setter [:league]))
+(rf/reg-event-db :failed (common/failed page))
 
 (rf/reg-sub ::league (getter [:league]))
 (rf/reg-sub ::leagues (getter [:leagues]))

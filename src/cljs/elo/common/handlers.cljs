@@ -44,7 +44,6 @@
 (defn loader-no-league
   [page uri on-success]
   (fn [{:keys [db]} _]
-    (js/console.log "Calling without league-id")
     {:db db
      :http-xhrio {:method :get
                   :uri uri
@@ -72,10 +71,10 @@
   (fn [db [_ {:keys [status parse-error] :as req}]]
     (js/console.log "Failed request " parse-error "req" req)
     (assoc-in* db page
-                      [:error]
-                      {:status status
-                       :status-text (:status-text parse-error)
-                       :original-text (:original-text parse-error)})))
+               [:error]
+               {:status status
+                :status-text (:status-text parse-error)
+                :original-text (:original-text parse-error)})))
 
 
 (rf/reg-event-db :set-route-params
