@@ -41,6 +41,18 @@
                   :on-success [on-success]
                   :on-failure [:failed]}}))
 
+(defn loader-no-league
+  [page uri on-success]
+  (fn [{:keys [db]} _]
+    (js/console.log "Calling without league-id")
+    {:db db
+     :http-xhrio {:method :get
+                  :uri uri
+                  :format (ajax/json-request-format)
+                  :response-format (ajax/json-response-format {:keywords? true})
+                  :on-success [on-success]
+                  :on-failure [:failed]}}))
+
 (defn writer
   [page uri on-success transform-params-fn]
   (fn [{:keys [db]} _]

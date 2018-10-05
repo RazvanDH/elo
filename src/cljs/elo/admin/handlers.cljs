@@ -45,7 +45,10 @@
 
 (rf/reg-event-db ::load-leagues-success (setter [:leagues]))
 
-(rf/reg-event-db ::load-leagues (common/loader page "/api/leagues" ::load-leagues-success))
+(rf/reg-event-db ::load-leagues (common/loader-no-league
+                                 page
+                                 "/api/leagues"
+                                 ::load-leagues-success))
 
 (rf/reg-event-db ::initialize-db
                  (fn [db _]
